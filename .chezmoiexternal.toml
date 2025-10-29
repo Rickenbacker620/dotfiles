@@ -1,0 +1,54 @@
+[".vim/pack/plugins/start/lightline"]
+    type = "archive"
+    url = "https://github.com/itchyny/lightline.vim/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+
+# Vim theme: dracula
+[".vim/pack/themes/start/dracula"]
+    type = "archive"
+    url = "https://github.com/dracula/vim/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+
+# Yazi theme: dracula
+[".config/yazi/flavors/dracula.yazi"]
+    type = "archive"
+    url = "https://github.com/dracula/yazi/archive/main.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+
+# MPV Anime4K shaders
+[".config/mpv/shaders"]
+    type = "archive"
+    url = "https://github.com/bloc97/Anime4K/releases/download/v4.0.1/Anime4K_v4.0.zip"
+    format = "zip"
+    exact = true
+    stripComponents = 0
+
+[".config/wofi"]
+    type = "archive"
+    url = "https://github.com/dracula/wofi/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+
+[".config/kitty/dracula.conf"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/dracula/kitty/master/dracula.conf"
+    refreshPeriod = "168h"
+
+[".config/kitty/diff.conf"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/dracula/kitty/master/diff.conf"
+    refreshPeriod = "168h"
+
+[".config/waybar/dracula"]
+    type = "archive"
+    url = "https://github.com/dracula/waybar/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"

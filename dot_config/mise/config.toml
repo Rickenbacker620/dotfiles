@@ -1,0 +1,7 @@
+[alias]
+cmake = "vfox:mise-plugins/vfox-cmake"
+
+[tools]
+pnpm = "latest"
+uv = "latest"
+cmake = "latest"

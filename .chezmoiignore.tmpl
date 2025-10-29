@@ -2,3 +2,13 @@
 **/*.md
 **/LICENSE
 **/screenshot.png
+
+{{- if eq .osid "darwin" }}
+# Linux desktop environment - ignore on macOS
+.config/hypr/**
+.config/waybar/**
+.config/wofi/**
+.config/wallpaper/**
+.config/kitty/**
+.config/mpv/**
+{{- end }}

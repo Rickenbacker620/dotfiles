@@ -1,7 +1,9 @@
 [tools]
 pnpm = "latest"
 uv = "latest"
-cmake = "latest"
+python = "latest"
+node = "latest"
+go = "latest"
 
 eza = "latest"
 dust = "latest"
@@ -15,7 +17,6 @@ duf = "latest"
 yazi = "latest"
 tokei = "latest"
 ffmpeg = "latest"
-node = "latest"
 
 [env]
 _.file = '~/.config/mise/.env'

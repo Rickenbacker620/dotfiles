@@ -1,7 +1,21 @@
-[alias]
-cmake = "vfox:mise-plugins/vfox-cmake"
-
 [tools]
 pnpm = "latest"
 uv = "latest"
 cmake = "latest"
+
+eza = "latest"
+dust = "latest"
+fd = "latest"
+bottom = "latest"
+bat = "latest"
+ripgrep = "latest"
+zoxide = "latest"
+fzf = "latest"
+duf = "latest"
+yazi = "latest"
+tokei = "latest"
+ffmpeg = "latest"
+node = "latest"
+
+[env]
+_.file = '~/.config/mise/.env'

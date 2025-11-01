@@ -52,3 +52,13 @@
     exact = true
     stripComponents = 1
     refreshPeriod = "168h"
+
+[".local/share/fish/vendor_completions.d/eza.fish"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/eza-community/eza/main/completions/fish/eza.fish"
+    refreshPeriod = "168h"
+
+[".local/share/fish/vendor_completions.d/dust.fish"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/bootandy/dust/refs/heads/master/completions/dust.fish"
+    refreshPeriod = "168h"

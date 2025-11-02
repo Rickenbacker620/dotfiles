@@ -1,8 +1,5 @@
 " Plugin settings
 set laststatus=2
-if !has('gui_running')
-  set t_Co=256
-endif
 let g:lightline = {
       \ 'colorscheme': 'dracula',
       \ 'active': {
@@ -10,12 +7,6 @@ let g:lightline = {
       \ },
       \ }
 
-let g:dracula_colorterm = 0
-
-if v:version < 802
-    packadd! dracula
-endif
-syntax enable
 colorscheme dracula
 
 "============ Key Mappings ============
@@ -62,21 +53,17 @@ noremap Q J
 let mapleader=" "
 
 "============ Basic Settings ============
-set hlsearch              " Highlight search results
 set cursorline           " Highlight current line
 set number               " Show line numbers
 set relativenumber       " Show relative line numbers
 set scrolloff=7          " Keep 7 lines above/below cursor
 set shiftwidth=2         " Number of spaces for autoindent
-set tabstop=4           " Number of spaces for tab
-set softtabstop=4       " Number of spaces for tab while editing
-set list                " Show invisible characters
-set wrap                " Wrap long lines
-set tw=0                " No automatic text wrapping
-set noshowmode          " Don't show mode (lightline shows it)
-set mouse=a             " Enable mouse support
-set ignorecase          " Case insensitive search
-set wildignorecase      " Case insensitive command-line completion
-set smartcase           " Case sensitive if search pattern has uppercase
+set tabstop=4            " Number of spaces for tab
+set softtabstop=4        " Number of spaces for tab while editing
+set list                 " Show invisible characters
+set noshowmode           " Don't show mode (lightline shows it)
+set ignorecase           " Case insensitive search
+set wildignorecase       " Case insensitive command-line completion
+set smartcase            " Case sensitive if search pattern has uppercase
 set clipboard+=unnamedplus  " Use system clipboard
 set listchars=tab:>-,trail:~,extends:>,precedes:< " Show special characters

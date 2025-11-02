@@ -17,6 +17,8 @@ duf = "latest"
 yazi = "latest"
 tokei = "latest"
 ffmpeg = "latest"
+tmux = "latest"
+neovim = "latest"
 
 [env]
 _.file = '~/.config/mise/.env'

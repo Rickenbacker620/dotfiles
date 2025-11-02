@@ -1,12 +1,12 @@
-[".vim/pack/plugins/start/lightline"]
+[".local/share/nvim/site/pack/plugins/start/lightline"]
     type = "archive"
     url = "https://github.com/itchyny/lightline.vim/archive/master.tar.gz"
     exact = true
     stripComponents = 1
     refreshPeriod = "168h"
 
-# Vim theme: dracula
-[".vim/pack/themes/start/dracula"]
+# Neovim theme: dracula
+[".local/share/nvim/site/pack/themes/start/dracula"]
     type = "archive"
     url = "https://github.com/dracula/vim/archive/master.tar.gz"
     exact = true

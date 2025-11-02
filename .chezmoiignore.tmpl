@@ -11,3 +11,8 @@
 .config/wallpaper/**
 .config/mpv/**
 {{- end }}
+
+{{- if ne .osid "linux-arch" }}
+# Hyprland autostart - only needed on Linux Arch
+.config/fish/conf.d/autostart.fish
+{{- end }}

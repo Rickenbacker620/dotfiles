@@ -1,0 +1,9 @@
+[user]
+  name = {{ .name | quote }}
+  email = {{ .email | quote }}
+
+[pull]
+  rebase = true
+
+[core]
+  excludesfile = ~/.gitignore

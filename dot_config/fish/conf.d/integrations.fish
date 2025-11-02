@@ -1,6 +1,5 @@
 # Third-party tool integrations
 if status --is-interactive
-    if type -q zoxide
-        zoxide init fish | source
-    end
+    zoxide init fish | source
+    ~/.local/bin/mise activate fish | source
 end

@@ -2,6 +2,7 @@
 **/*.md
 **/LICENSE
 **/screenshot.png
+common/**
 
 {{- if eq .osid "darwin" }}
 # Linux desktop environment - ignore on macOS
@@ -14,5 +15,5 @@
 
 {{- if ne .osid "linux-arch" }}
 # Hyprland autostart - only needed on Linux Arch
-.config/fish/conf.d/autostart.fish
+.config/fish/conf.d/hyprland.fish
 {{- end }}

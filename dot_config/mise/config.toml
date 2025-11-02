@@ -19,6 +19,8 @@ tokei = "latest"
 ffmpeg = "latest"
 tmux = "latest"
 neovim = "latest"
+jq = "latest"
+tlrc = "latest"
 
 [env]
 _.file = '~/.config/mise/.env'

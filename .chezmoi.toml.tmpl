@@ -3,11 +3,15 @@
 {{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
 {{- end -}}
 
+{{- $email := promptString "Email address" "fu78sion@gmail.com" -}}
+
+{{- $name := promptString "Git name" "Rickenbacker620" -}}
+
 {{- $choices := list "desktop" "server" -}}
-{{- $hosttype := promptChoice "What type of host are you on" $choices -}}
+{{- $hosttype := promptChoice "Host type" $choices "server" -}}
 
 [data]
-    email = "fu78sion@gmail.com"
-    name = "Rickenbacker620"
+    email = {{ $email | quote }}
+    name = {{ $name | quote }}
     osid = {{ $osid | quote }}
-    hosttype = {{- $hosttype | quote -}}
+    hosttype = {{ $hosttype | quote }}

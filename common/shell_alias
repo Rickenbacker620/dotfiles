@@ -22,3 +22,9 @@ alias e='$EDITOR'
 
 # File manager
 alias f='yazi'
+
+# Spec Kit
+alias spec-kit 'uvx --from git+https://github.com/github/spec-kit.git specify init .'
+
+# Open Spec
+alias open-spec 'npx @fission-ai/openspec@latest init'

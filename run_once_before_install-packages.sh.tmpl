@@ -1,0 +1,32 @@
+#!/bin/bash
+
+set -e
+
+{{- $osConfig := index . .osid }}
+{{- $pm := $osConfig.packageManager }}
+{{- $packages := $osConfig.packages }}
+
+echo "Updating package manager..."
+{{ $pm.update }}
+
+echo "Installing essential packages ({{ .osid }})..."
+{{ $pm.install }} git curl wget fish \
+{{- range $packages.essential }}
+  {{ . }} \
+{{- end }}
+
+{{ if eq .hosttype "desktop" -}}
+
+echo "Installing desktop packages ({{ .osid }})..."
+{{-   if hasKey $pm "installCask" }}
+{{ $pm.installCask }} \
+{{-   else }}
+{{ $pm.install }} \
+{{-   end }}
+{{- range $packages.desktop }}
+  {{ . }} \
+{{- end }}
+
+{{ end -}}
+
+echo "All packages installed successfully!"

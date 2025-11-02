@@ -15,6 +15,10 @@ echo "Installing essential packages ({{ .osid }})..."
   {{ . }} \
 {{- end }}
 
+echo "Installing mise"
+
+curl https://mise.run | sh
+
 {{ if eq .hosttype "desktop" -}}
 
 echo "Installing desktop packages ({{ .osid }})..."

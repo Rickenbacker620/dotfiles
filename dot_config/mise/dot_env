@@ -1,2 +1,2 @@
 BAT_THEME=Dracula
-EDITOR=vim
+EDITOR=nvim

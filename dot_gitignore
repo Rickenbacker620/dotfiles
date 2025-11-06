@@ -52,3 +52,7 @@ vendor/
 .kilocode/
 .specify/
 openspec/
+AGENTS.md
+
+# personal
+.personal/

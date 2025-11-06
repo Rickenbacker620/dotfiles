@@ -1,2 +1,3 @@
 BAT_THEME=Dracula
 EDITOR=nvim
+MISE_TRUSTED_CONFIG_PATH=~/workplace

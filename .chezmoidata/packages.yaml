@@ -52,6 +52,14 @@ linux-debian:
       - fonts-noto-cjk
       - fonts-noto-color-emoji
 
+linux-amzn:
+  packageManager:
+    update: "sudo yum update -y"
+    install: "sudo yum install -y"
+  packages:
+    essential:
+    desktop:
+
 darwin:
   packageManager:
     update: "brew update"

@@ -62,3 +62,11 @@
     type = "file"
     url = "https://raw.githubusercontent.com/bootandy/dust/refs/heads/master/completions/dust.fish"
     refreshPeriod = "168h"
+
+# Zellij theme: dracula
+[".config/zellij/themes"]
+    type = "archive"
+    url = "https://github.com/dracula/zellij/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"

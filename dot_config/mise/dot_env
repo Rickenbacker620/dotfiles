@@ -1,3 +1,4 @@
 BAT_THEME=Dracula
 EDITOR=nvim
-MISE_TRUSTED_CONFIG_PATH=~/workplace
+MISE_TRUSTED_CONFIG_PATH=$HOME/workplace
+PLAYGROUND_DIR=$HOME/workplace/playground

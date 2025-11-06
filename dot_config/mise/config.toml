@@ -20,6 +20,7 @@ zellij = "latest"
 neovim = "latest"
 jq = "latest"
 tlrc = "latest"
+gum = "latest"
 
 [env]
 _.file = '~/.config/mise/.env'

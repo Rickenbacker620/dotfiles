@@ -52,6 +52,25 @@ linux-debian:
       - fonts-noto-cjk
       - fonts-noto-color-emoji
 
+linux-ubuntu:
+  packageManager:
+    update: "sudo apt-get update"
+    install: "sudo apt-get install -y"
+  packages:
+    essential:
+      - build-essential
+      - openssh-client
+      - openssh-server
+      - ca-certificates
+      - gnupg
+    desktop:
+      - mpv
+      - libvirt-daemon
+      - virt-viewer
+      - fonts-noto
+      - fonts-noto-cjk
+      - fonts-noto-color-emoji
+
 linux-amzn:
   packageManager:
     update: "sudo yum update -y"

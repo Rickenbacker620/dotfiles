@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 {{- $osConfig := index . .osid }}
 {{- $pm := $osConfig.packageManager }}
 {{- $packages := $osConfig.packages }}

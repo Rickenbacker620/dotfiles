@@ -21,6 +21,7 @@ neovim = "latest"
 jq = "latest"
 tlrc = "latest"
 gum = "latest"
+starship = "latest"
 
 [env]
 _.file = '~/.config/mise/.env'

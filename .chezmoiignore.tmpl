@@ -16,3 +16,17 @@
 # Hyprland autostart - only needed on Linux Arch
 .config/fish/conf.d/hyprland.fish
 {{- end }}
+
+{{- if eq .chezmoi.os "windows" }}
+.config/fish/**
+.config/hypr/**
+.config/kitty/**
+.config/mpv/**
+.config/starship.toml
+.config/wallpaper/**
+.config/waybar/**
+.config/zellij/**
+.bashrc
+.chezmoiscripts/run_once_before_install-packages.sh.tmpl
+.chezmoiscripts/run_once_after_mise-setup.sh.tmpl
+{{- end }}

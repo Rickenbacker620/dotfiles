@@ -1,5 +1,6 @@
+{{- if eq .chezmoi.os "windows" -}}
+{{- else -}}
 #!/bin/bash
-
 {{- $osConfig := index . .osid }}
 {{- $pm := $osConfig.packageManager }}
 {{- $packages := $osConfig.packages }}
@@ -32,3 +33,4 @@ echo "Installing desktop packages ({{ .osid }})..."
 {{ end -}}
 
 echo "All packages installed successfully!"
+{{- end -}}

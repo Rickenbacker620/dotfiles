@@ -1,5 +1,6 @@
 {{- if eq .chezmoi.os "windows" -}}
 {{- else -}}
 #!/bin/bash
-~/.local/bin/mise install
+export PATH="$HOME/.local/bin:$PATH"
+mise install
 {{- end -}}

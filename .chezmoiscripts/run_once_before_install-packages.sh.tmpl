@@ -14,9 +14,11 @@ echo "Installing essential packages ({{ .osid }})..."
   {{ . }} \
 {{- end }}
 
+{{ if and (ne .osid "linux-arch") (ne .osid "darwin") -}}
 echo "Installing mise"
 
 curl https://mise.run | sh
+{{ end -}}
 
 {{ if eq .hosttype "desktop" -}}
 

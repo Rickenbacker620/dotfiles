@@ -1,0 +1,18 @@
+{{- $osConfig := index . .osid -}}
+{{- $pm := $osConfig.packageManager -}}
+{{- $packages := $osConfig.packages -}}
+$ErrorActionPreference = "Stop"
+
+Write-Host "Installing essential packages ({{ .osid }})..."
+{{- range $packages.essential }}
+{{ $pm.install }} {{ . }}
+{{- end }}
+
+{{ if eq .hosttype "desktop" -}}
+Write-Host "Installing desktop packages ({{ .osid }})..."
+{{- range $packages.desktop }}
+{{ $pm.install }} {{ . }}
+{{- end }}
+{{ end -}}
+
+Write-Host "All packages installed successfully!"

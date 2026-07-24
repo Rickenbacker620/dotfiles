@@ -7,6 +7,7 @@ linux-arch:
       - openssh
       - 7zip
       - base-devel
+      - mise
     desktop:
       - hyprland
       - waybar
@@ -87,5 +88,45 @@ darwin:
   packages:
     essential:
       - openssh
+      - mise
+      - git
     desktop:
       - font-monaspace-nf
+      - kitty
+      - keka
+      - iina
+      - steam
+      - wechat
+      - baidunetdisk
+      - neteasemusic
+      - telegram
+      - visual-studio-code
+      - claude
+      - clash-verge-rev
+
+windows:
+  packageManager:
+    install: "winget install --accept-source-agreements --accept-package-agreements --exact --id"
+  packages:
+    essential:
+      - Git.Git
+      - 7zip.7zip
+      - jdx.mise
+    desktop:
+      - abbodi1406.vcredist
+      - Bandisoft.Honeyview
+      - ClashVergeRev.ClashVergeRev
+      - Daum.PotPlayer
+      - PIKCLOUD.PikPak
+      - RARLab.WinRAR
+      - Valve.Steam
+      - Tencent.WeChat.Universal
+      - qBittorrent.qBittorrent
+      - Baidu.BaiduNetdisk
+      - NetEase.CloudMusic
+      - Comfy.ComfyUI-Desktop
+      - Ollama.Ollama
+      - Telegram.TelegramDesktop
+      - Microsoft.VisualStudioCode
+      - Microsoft.PowerToys
+      - Anthropic.Claude

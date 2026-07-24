@@ -28,3 +28,9 @@
 .config/zellij/**
 .bashrc
 {{- end }}
+
+{{- if ne .chezmoi.os "windows" }}
+# Windows-only install scripts (bash equivalents cover Linux/macOS)
+.chezmoiscripts/run_once_before_install-packages.ps1.tmpl
+.chezmoiscripts/run_once_after_mise-setup.ps1.tmpl
+{{- end }}

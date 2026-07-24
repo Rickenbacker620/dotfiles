@@ -92,6 +92,7 @@ darwin:
       - git
     desktop:
       - font-monaspace-nf
+      - google-chrome
       - kitty
       - keka
       - iina
@@ -117,6 +118,7 @@ windows:
       - Bandisoft.Honeyview
       - ClashVergeRev.ClashVergeRev
       - Daum.PotPlayer
+      - Google.Chrome
       - PIKCLOUD.PikPak
       - RARLab.WinRAR
       - Valve.Steam

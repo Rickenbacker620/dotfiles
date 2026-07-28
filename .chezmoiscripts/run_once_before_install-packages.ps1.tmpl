@@ -1,3 +1,4 @@
+{{- if eq .chezmoi.os "windows" -}}
 {{- $osConfig := index . .osid -}}
 {{- $pm := $osConfig.packageManager -}}
 {{- $packages := $osConfig.packages -}}
@@ -16,3 +17,4 @@ Write-Host "Installing desktop packages ({{ .osid }})..."
 {{ end -}}
 
 Write-Host "All packages installed successfully!"
+{{- end -}}

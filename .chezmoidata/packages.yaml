@@ -7,13 +7,12 @@ linux-arch:
       - openssh
       - 7zip
       - base-devel
-      - mise
     desktop:
       - hyprland
       - waybar
       - wl-clipboard
       - wofi
-      - kitty
+      - ghostty
       - pipewire
       - wireplumber
       - brightnessctl
@@ -88,12 +87,11 @@ darwin:
   packages:
     essential:
       - openssh
-      - mise
       - git
     desktop:
       - font-monaspace-nf
       - google-chrome
-      - kitty
+      - ghostty
       - keka
       - iina
       - steam
@@ -104,6 +102,8 @@ darwin:
       - visual-studio-code
       - claude
       - clash-verge-rev
+      - betterdisplay
+      - snipaste
 
 windows:
   packageManager:

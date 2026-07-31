@@ -1,11 +1,4 @@
 [tools]
-pnpm = "latest"
-uv = "latest"
-python = "latest"
-node = "22"
-go = "latest"
-rust = "latest"
-
 eza = "latest"
 dust = "latest"
 fd = "latest"

@@ -9,7 +9,7 @@ echo "Updating package manager..."
 {{ $pm.update }}
 
 echo "Installing essential packages ({{ .osid }})..."
-{{ $pm.install }} git curl wget fish \
+{{ $pm.install }} \
 {{- range $packages.essential }}
   {{ . }} \
 {{- end }}
@@ -18,7 +18,7 @@ echo "Installing mise"
 
 curl https://mise.run | sh
 
-{{ if eq .hosttype "desktop" -}}
+{{ if .hasgui -}}
 
 echo "Installing desktop packages ({{ .osid }})..."
 {{-   if hasKey $pm "installCask" }}

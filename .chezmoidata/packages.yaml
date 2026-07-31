@@ -7,6 +7,10 @@ linux-arch:
       - openssh
       - 7zip
       - base-devel
+      - git
+      - curl
+      - wget
+      - fish
     desktop:
       - hyprland
       - waybar
@@ -44,6 +48,10 @@ linux-debian:
       - openssh-server
       - ca-certificates
       - gnupg
+      - git
+      - curl
+      - wget
+      - fish
     desktop:
       - mpv
       - libvirt-daemon
@@ -63,6 +71,10 @@ linux-ubuntu:
       - openssh-server
       - ca-certificates
       - gnupg
+      - git
+      - curl
+      - wget
+      - fish
     desktop:
       - mpv
       - libvirt-daemon
@@ -77,6 +89,9 @@ linux-amzn:
     install: "sudo yum install -y"
   packages:
     essential:
+      - git
+      - curl
+      - wget
     desktop:
 
 darwin:
@@ -88,6 +103,9 @@ darwin:
     essential:
       - openssh
       - git
+      - curl
+      - wget
+      - fish
     desktop:
       - font-monaspace-nf
       - google-chrome
@@ -104,6 +122,7 @@ darwin:
       - clash-verge-rev
       - betterdisplay
       - snipaste
+      - discord
 
 windows:
   packageManager:
@@ -132,3 +151,4 @@ windows:
       - Microsoft.VisualStudioCode
       - Microsoft.PowerToys
       - Anthropic.Claude
+      - Discord.Discord

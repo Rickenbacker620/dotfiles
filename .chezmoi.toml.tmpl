@@ -3,15 +3,17 @@
 {{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
 {{- end -}}
 
-{{- $email := promptString "Email address" "fu78sion@gmail.com" -}}
+{{- $email := promptStringOnce . "email" "Email address" "fu78sion@gmail.com" -}}
 
-{{- $name := promptString "Git name" "Rickenbacker620" -}}
+{{- $name := promptStringOnce . "name" "Git name" "Rickenbacker620" -}}
 
-{{- $choices := list "desktop" "server" -}}
-{{- $hosttype := promptChoice "Host type" $choices "server" -}}
+{{- $hasgui := true -}}
+{{- if eq .chezmoi.os "linux" -}}
+{{-   $hasgui = promptBoolOnce . "hasgui" "Install GUI/desktop packages" false -}}
+{{- end -}}
 
 [data]
     email = {{ $email | quote }}
     name = {{ $name | quote }}
     osid = {{ $osid | quote }}
-    hosttype = {{ $hosttype | quote }}
+    hasgui = {{ $hasgui }}

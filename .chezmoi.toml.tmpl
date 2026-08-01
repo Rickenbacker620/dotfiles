@@ -7,13 +7,13 @@
 
 {{- $name := promptStringOnce . "name" "Git name" "Rickenbacker620" -}}
 
-{{- $hasgui := true -}}
+{{- $hasDesktop := true -}}
 {{- if eq .chezmoi.os "linux" -}}
-{{-   $hasgui = promptBoolOnce . "hasgui" "Install GUI/desktop packages" false -}}
+{{-   $hasDesktop = promptBoolOnce . "hasDesktop" "Install GUI/desktop packages" false -}}
 {{- end -}}
 
 [data]
     email = {{ $email | quote }}
     name = {{ $name | quote }}
     osid = {{ $osid | quote }}
-    hasgui = {{ $hasgui }}
+    hasDesktop = {{ $hasDesktop }}

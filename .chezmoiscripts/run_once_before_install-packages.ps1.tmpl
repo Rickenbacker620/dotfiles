@@ -9,7 +9,7 @@ Write-Host "Installing essential packages ({{ .osid }})..."
 {{ $pm.install }} {{ . }}
 {{- end }}
 
-{{ if .hasgui -}}
+{{ if .hasDesktop -}}
 Write-Host "Installing desktop packages ({{ .osid }})..."
 {{- range $packages.desktop }}
 {{ $pm.install }} {{ . }}

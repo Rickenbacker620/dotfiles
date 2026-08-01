@@ -3,28 +3,22 @@
 **/LICENSE
 **/screenshot.png
 
-{{- if eq .osid "darwin" }}
-# Linux desktop environment - ignore on macOS
+{{- if not (and (eq .chezmoi.os "linux") .hasDesktop) }}
+# Desktop/GUI configs - only needed on Linux with GUI packages installed
 .config/hypr/**
 .config/waybar/**
 .config/wofi/**
 .config/wallpaper/**
 .config/mpv/**
-{{- end }}
-
-{{- if ne .osid "linux-arch" }}
-# Hyprland autostart - only needed on Linux Arch
 .config/fish/conf.d/hyprland.fish
 {{- end }}
 
 {{- if eq .chezmoi.os "windows" }}
+# Unix-only configs - not needed on Windows
 .config/fish/**
-.config/hypr/**
 .config/ghostty/**
-.config/mpv/**
 .config/starship.toml
-.config/wallpaper/**
-.config/waybar/**
 .config/zellij/**
 .bashrc
+.zshrc
 {{- end }}

@@ -19,9 +19,3 @@ alias df='duf'
 
 # Editor shortcut
 alias e='$EDITOR'
-
-# Spec Kit
-alias spec-kit='uvx --from git+https://github.com/github/spec-kit.git specify init .'
-
-# Open Spec
-alias open-spec='npx @fission-ai/openspec@latest init'

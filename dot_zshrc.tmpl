@@ -1,11 +1,11 @@
 #
-# ~/.bashrc
+# ~/.zshrc
 #
 
 # If not running interactively, don't do anything
-[[ $- != *i* ]] && return
+[[ -o interactive ]] || return
 
 unset HISTFILE
 
 {{ template "shell_alias" . }}
-eval "$(starship init bash)"
+eval "$(starship init zsh)"

@@ -1,3 +1,12 @@
+function __play_open_code
+    if command -q code
+        code .
+    else
+        echo "Error: VS Code 'code' command not found"
+        echo "Make sure VS Code is installed and the 'code' command is in your PATH"
+    end
+end
+
 function play
     # Check if gum is installed
     if not command -q gum
@@ -11,13 +20,28 @@ function play
         return 1
     end
 
-    if test (count $argv) -ge 1
-        # Name given as an argument - confirm before creating
-        set name $argv[1]
+    set clone_url ""
 
-        if not gum confirm "Create project '$name'?"
-            echo "Cancelled"
-            return 1
+    if test (count $argv) -ge 1
+        set input $argv[1]
+
+        if string match -rq '^(https?://|git@)\S+' -- $input
+            # Argument is a git URL - derive the project name from it
+            set clone_url $input
+            set name (string replace -r '\.git$' '' -- (string split -r -m1 '/' -- $clone_url)[-1])
+
+            if not gum confirm "Clone '$clone_url' as '$name'?"
+                echo "Cancelled"
+                return 1
+            end
+        else
+            # Name given as an argument - confirm before creating
+            set name $input
+
+            if not gum confirm "Create project '$name'?"
+                echo "Cancelled"
+                return 1
+            end
         end
     else
         # No argument - ask for project name
@@ -42,12 +66,7 @@ function play
         # Ask if user wants to open existing project
         if gum confirm "Open existing project in VS Code?"
             cd "$project_path"
-            if command -q code
-                code .
-            else
-                echo "Error: VS Code 'code' command not found"
-                echo "Make sure VS Code is installed and the 'code' command is in your PATH"
-            end
+            __play_open_code
         else
             # Just cd to the directory if they don't want to open VS Code
             cd "$project_path"
@@ -55,30 +74,31 @@ function play
         return 0
     end
 
-    # Create the directory
-    mkdir -p "$project_path"
-
-    # Check if directory was created successfully
-    if test $status -eq 0
-        gum style --foreground 212 --border double --padding "1 2" \
-            "✓ Project created successfully!" \
-            "" \
-            "Location: $project_path"
-
-        # Change to the new directory
-        cd "$project_path"
-
-        # Ask if user wants to open in VS Code
-        if gum confirm "Open in VS Code?"
-            if command -q code
-                code .
-            else
-                echo "Error: VS Code 'code' command not found"
-                echo "Make sure VS Code is installed and the 'code' command is in your PATH"
-            end
+    # Create the project, either by cloning or by making an empty directory
+    if test -n "$clone_url"
+        if not git clone -- "$clone_url" "$project_path"
+            echo "Error: Failed to clone repository"
+            return 1
         end
+        set success_message "✓ Repository cloned successfully!"
     else
-        echo "Error: Failed to create directory at $project_path"
-        return 1
+        if not mkdir -p "$project_path"
+            echo "Error: Failed to create directory at $project_path"
+            return 1
+        end
+        set success_message "✓ Project created successfully!"
+    end
+
+    gum style --foreground 212 --border double --padding "1 2" \
+        "$success_message" \
+        "" \
+        "Location: $project_path"
+
+    # Change to the new directory
+    cd "$project_path"
+
+    # Ask if user wants to open in VS Code
+    if gum confirm "Open in VS Code?"
+        __play_open_code
     end
 end

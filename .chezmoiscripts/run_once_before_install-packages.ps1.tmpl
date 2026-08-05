@@ -4,15 +4,24 @@
 {{- $packages := $osConfig.packages -}}
 $ErrorActionPreference = "Stop"
 
+function Invoke-Checked {
+    param([Parameter(Mandatory)][string]$CommandLine)
+    Write-Host $CommandLine
+    Invoke-Expression $CommandLine
+    if ($LASTEXITCODE -ne 0) {
+        throw "Command failed with exit code ${LASTEXITCODE}: $CommandLine"
+    }
+}
+
 Write-Host "Installing essential packages ({{ .osid }})..."
 {{- range $packages.essential }}
-{{ $pm.install }} {{ . }}
+Invoke-Checked '{{ $pm.install }} {{ . }}'
 {{- end }}
 
 {{ if .hasDesktop -}}
 Write-Host "Installing desktop packages ({{ .osid }})..."
 {{- range $packages.desktop }}
-{{ $pm.install }} {{ . }}
+Invoke-Checked '{{ $pm.install }} {{ . }}'
 {{- end }}
 {{ end -}}
 

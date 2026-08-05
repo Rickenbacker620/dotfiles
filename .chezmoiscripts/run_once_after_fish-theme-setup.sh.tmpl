@@ -1,0 +1,9 @@
+{{- if eq .chezmoi.os "windows" -}}
+{{- else -}}
+#!/bin/bash
+set -euo pipefail
+
+if command -v fish >/dev/null 2>&1; then
+  fish -c 'fish_config theme choose "Dracula"'
+fi
+{{- end -}}

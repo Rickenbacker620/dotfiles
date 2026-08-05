@@ -1,0 +1,7 @@
+# Interactive-only setup (aliases, prompt, third-party integrations)
+if status is-interactive
+{{ template "shell_alias" . }}
+    starship init fish | source
+    ~/.local/bin/mise activate fish | source
+    zoxide init fish | source
+end

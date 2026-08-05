@@ -1,6 +1,7 @@
 {{- if eq .chezmoi.os "windows" -}}
 {{- else -}}
 #!/bin/bash
+set -euo pipefail
 {{- $osConfig := index . .osid }}
 {{- $pm := $osConfig.packageManager }}
 {{- $packages := $osConfig.packages }}
@@ -16,7 +17,7 @@ echo "Installing essential packages ({{ .osid }})..."
 
 echo "Installing mise"
 
-curl https://mise.run | sh
+curl -fsSL https://mise.run | sh
 
 {{ if .hasDesktop -}}
 

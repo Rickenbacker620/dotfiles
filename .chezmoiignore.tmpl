@@ -13,10 +13,14 @@
 .config/fish/conf.d/hyprland.fish
 {{- end }}
 
+{{- if or (eq .chezmoi.os "windows") (and (eq .chezmoi.os "linux") (not .hasDesktop)) }}
+# ghostty isn't installed on Windows, or on Linux without GUI packages
+.config/ghostty/**
+{{- end }}
+
 {{- if eq .chezmoi.os "windows" }}
 # Unix-only configs - not needed on Windows
 .config/fish/**
-.config/ghostty/**
 .config/starship.toml
 .config/zellij/**
 .bashrc

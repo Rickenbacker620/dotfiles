@@ -19,7 +19,7 @@ echo "Installing mise"
 
 curl -fsSL https://mise.run | sh
 
-{{ if .hasDesktop -}}
+{{ if and .hasDesktop $packages.desktop -}}
 
 echo "Installing desktop packages ({{ .osid }})..."
 {{-   if hasKey $pm "installCask" }}

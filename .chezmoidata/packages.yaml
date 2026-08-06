@@ -8,10 +8,8 @@ linux-arch:
       - 7zip
       - base-devel
       - git
-      - curl
       - wget
       - fish
-      - neovim
     desktop:
       - hyprland
       - waybar
@@ -50,10 +48,8 @@ linux-debian:
       - ca-certificates
       - gnupg
       - git
-      - curl
       - wget
       - fish
-      - neovim
     desktop:
       - mpv
       - libvirt-daemon
@@ -74,10 +70,8 @@ linux-ubuntu:
       - ca-certificates
       - gnupg
       - git
-      - curl
       - wget
       - fish
-      - neovim
     desktop:
       - mpv
       - libvirt-daemon
@@ -93,9 +87,7 @@ linux-amzn:
   packages:
     essential:
       - git
-      - curl
       - wget
-      - neovim
     desktop:
 
 darwin:
@@ -107,10 +99,8 @@ darwin:
     essential:
       - openssh
       - git
-      - curl
       - wget
       - fish
-      - neovim
     desktop:
       - font-monaspace-nf
       - google-chrome

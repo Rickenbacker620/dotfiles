@@ -2,20 +2,4 @@
 # ~/.bashrc
 #
 
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
-
-unset HISTFILE
-
-function f() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	command yazi "$@" --cwd-file="$tmp"
-	IFS= read -r -d '' cwd < "$tmp"
-	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
-	command rm -f -- "$tmp"
-}
-
-{{ template "shell_alias" . }}
-eval "$(~/.local/bin/mise activate bash)"
-eval "$(zoxide init bash)"
-eval "$(starship init bash)"
+{{ template "posix_rc" "bash" }}

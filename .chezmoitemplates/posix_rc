@@ -5,7 +5,9 @@ case $- in
 esac
 
 # Persistent history
-HISTFILE="$HOME/.{{ . }}_history"
+HISTDIR="${XDG_STATE_HOME:-$HOME/.local/state}/{{ . }}"
+mkdir -p "$HISTDIR"
+HISTFILE="$HISTDIR/history"
 HISTSIZE=10000
 {{ if eq . "zsh" -}}
 SAVEHIST=10000

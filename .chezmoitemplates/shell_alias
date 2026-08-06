@@ -1,6 +1,6 @@
 # File listing (eza)
-alias ls='eza --icons'
-alias ll='eza --time-style="+%y-%m-%d %H:%M" --icons -hla'
+alias ls='eza --icons=auto'
+alias ll='eza --time-style="+%y-%m-%d %H:%M" --icons=auto -hla'
 alias tree='eza --tree --git-ignore'
 
 # Cat with syntax highlighting (bat)

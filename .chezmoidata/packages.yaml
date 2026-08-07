@@ -109,7 +109,6 @@ darwin:
       - iina
       - steam
       - wechat
-      - neteasemusic
       - telegram
       - visual-studio-code
       - claude
@@ -119,6 +118,7 @@ darwin:
       - snipaste
       - discord
       - docker
+      - scroll-reverser
 
 windows:
   packageManager:

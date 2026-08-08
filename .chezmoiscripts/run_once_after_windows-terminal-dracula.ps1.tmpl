@@ -1,0 +1,45 @@
+{{- if eq .chezmoi.os "windows" -}}
+$ErrorActionPreference = "Stop"
+
+$fragmentDir = "$env:LOCALAPPDATA\Microsoft\Windows Terminal\Fragments\Dracula"
+$fragmentPath = "$fragmentDir\dracula.json"
+
+New-Item -ItemType Directory -Path $fragmentDir -Force | Out-Null
+
+$fragmentContent = @{
+    schemes  = @(
+        @{
+            name                 = "Dracula"
+            cursorColor          = "#F8F8F2"
+            selectionBackground  = "#44475A"
+            background           = "#282A36"
+            foreground           = "#F8F8F2"
+            black                = "#21222C"
+            blue                 = "#BD93F9"
+            cyan                 = "#8BE9FD"
+            green                = "#50FA7B"
+            purple               = "#FF79C6"
+            red                  = "#FF5555"
+            white                = "#F8F8F2"
+            yellow               = "#F1FA8C"
+            brightBlack          = "#6272A4"
+            brightBlue           = "#D6ACFF"
+            brightCyan           = "#A4FFFF"
+            brightGreen          = "#69FF94"
+            brightPurple         = "#FF92DF"
+            brightRed            = "#FF6E6E"
+            brightWhite          = "#FFFFFF"
+            brightYellow         = "#FFFFA5"
+        }
+    )
+    profiles = @{
+        defaults = @{
+            colorScheme = "Dracula"
+        }
+    }
+}
+
+$fragmentContent | ConvertTo-Json -Depth 32 | Set-Content -Path $fragmentPath
+
+Write-Host "Dracula Windows Terminal fragment installed at $fragmentPath"
+{{- end -}}

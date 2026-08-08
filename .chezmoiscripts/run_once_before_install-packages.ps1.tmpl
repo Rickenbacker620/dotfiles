@@ -8,7 +8,9 @@ function Invoke-Checked {
     param([Parameter(Mandatory)][string]$CommandLine)
     Write-Host $CommandLine
     Invoke-Expression $CommandLine
-    if ($LASTEXITCODE -ne 0) {
+    # winget returns 0x8A15002B (no applicable update) when the package is
+    # already installed and up to date; that's not a real failure.
+    if ($LASTEXITCODE -ne 0 -and $LASTEXITCODE -ne -1978335189) {
         throw "Command failed with exit code ${LASTEXITCODE}: $CommandLine"
     }
 }

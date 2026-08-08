@@ -9,7 +9,9 @@ zoxide = "latest"
 fzf = "latest"
 duf = "latest"
 yazi = "latest"
+{{- if ne .chezmoi.os "windows" }}
 zellij = "latest"
+{{- end }}
 neovim = "latest"
 jq = "latest"
 gum = "latest"

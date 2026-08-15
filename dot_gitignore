@@ -45,13 +45,5 @@ vendor/
 .env.local
 .env.*.local
 
-# AI
-.clinerules/
-.roo/
-.kilocode/
-.specify/
-openspec/
-AGENTS.md
-
 # personal
 .personal/

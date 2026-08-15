@@ -19,6 +19,3 @@ alias df='duf'
 
 # Editor shortcut
 alias e='$EDITOR'
-
-# Brazil
-alias bb='brazil-build'

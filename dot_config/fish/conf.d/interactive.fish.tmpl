@@ -1,7 +1,8 @@
 # Interactive-only setup (aliases, prompt, third-party integrations)
 if status is-interactive
 {{ template "shell_alias" . }}
-    ~/.local/bin/mise activate fish | source
-    zoxide init fish | source
-    starship init fish | source
+~/.local/bin/mise activate fish | source
+zoxide init fish | source
+starship init fish | source
+fish_config theme choose Dracula
 end

@@ -119,6 +119,7 @@ darwin:
       - discord
       - docker
       - scroll-reverser
+      - raycast
 
 windows:
   packageManager:
@@ -148,3 +149,4 @@ windows:
       - Microsoft.PowerToys
       - Anthropic.Claude
       - Discord.Discord
+      - Raycast.Raycast

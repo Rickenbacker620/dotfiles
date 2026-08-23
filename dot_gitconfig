@@ -1,0 +1,9 @@
+[user]
+  name = Rickenbacker620
+  email = fu78sion@gmail.com
+
+[pull]
+  rebase = true
+
+[core]
+  excludesfile = ~/.gitignore

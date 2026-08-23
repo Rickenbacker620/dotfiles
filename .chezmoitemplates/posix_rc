@@ -28,100 +28,17 @@ function f() {
 	command rm -f -- "$tmp"
 }
 
-_play_open_code() {
-	if command -v code >/dev/null 2>&1; then
-		code .
-	else
-		echo "Error: VS Code 'code' command not found"
-		echo "Make sure VS Code is installed and the 'code' command is in your PATH"
-	fi
-}
-
 play() {
-	local clone_url input name project_path success_message
-
-	if ! command -v gum >/dev/null 2>&1; then
-		echo "Error: gum is not installed. Install it from: https://github.com/charmbracelet/gum"
-		return 1
+	local tmp rc cwd
+	tmp="$(mktemp -t "play-cwd.XXXXXX")"
+	play-engine --cwd-file "$tmp" "$@"
+	rc=$?
+	if [ -s "$tmp" ]; then
+		cwd="$(cat "$tmp")"
+		[ -d "$cwd" ] && cd -- "$cwd"
 	fi
-
-	if [ -z "$PLAYGROUND_DIR" ]; then
-		echo "Error: PLAYGROUND_DIR environment variable is not set"
-		echo "Set it in your shell config: export PLAYGROUND_DIR=/path/to/playground"
-		return 1
-	fi
-
-	clone_url=""
-
-	if [ $# -ge 1 ]; then
-		input=$1
-		case "$input" in
-			https://*|http://*|git@*)
-				clone_url=$input
-				name=${clone_url%.git}
-				name=${name##*/}
-				if ! gum confirm "Clone '$clone_url' as '$name'?"; then
-					echo "Cancelled"
-					return 1
-				fi
-				;;
-			*)
-				name=$input
-				if ! gum confirm "Create project '$name'?"; then
-					echo "Cancelled"
-					return 1
-				fi
-				;;
-		esac
-	else
-		name=$(gum input --placeholder "What's the project name?")
-		if [ -z "$name" ]; then
-			echo "Cancelled: No project name provided"
-			return 1
-		fi
-	fi
-
-	project_path="$PLAYGROUND_DIR/$name"
-
-	if [ -d "$project_path" ]; then
-		gum style --foreground 214 --border double --padding "1 2" \
-			"⚠ Project already exists!" \
-			"" \
-			"Location: $project_path"
-
-		if gum confirm "Open existing project in VS Code?"; then
-			cd "$project_path" || return 1
-			_play_open_code
-		else
-			cd "$project_path" || return 1
-		fi
-		return 0
-	fi
-
-	if [ -n "$clone_url" ]; then
-		if ! git clone -- "$clone_url" "$project_path"; then
-			echo "Error: Failed to clone repository"
-			return 1
-		fi
-		success_message="✓ Repository cloned successfully!"
-	else
-		if ! mkdir -p "$project_path"; then
-			echo "Error: Failed to create directory at $project_path"
-			return 1
-		fi
-		success_message="✓ Project created successfully!"
-	fi
-
-	gum style --foreground 212 --border double --padding "1 2" \
-		"$success_message" \
-		"" \
-		"Location: $project_path"
-
-	cd "$project_path" || return 1
-
-	if gum confirm "Open in VS Code?"; then
-		_play_open_code
-	fi
+	rm -f -- "$tmp"
+	return $rc
 }
 
 {{ template "shell_alias" . }}

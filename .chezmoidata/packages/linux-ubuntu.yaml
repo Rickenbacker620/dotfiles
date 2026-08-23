@@ -1,0 +1,21 @@
+linux-ubuntu:
+  packageManager:
+    update: "sudo apt-get update"
+    install: "sudo apt-get install -y"
+  packages:
+    essential:
+      - build-essential
+      - openssh-client
+      - openssh-server
+      - ca-certificates
+      - gnupg
+      - git
+      - wget
+      - fish
+    desktop:
+      - mpv
+      - libvirt-daemon
+      - virt-viewer
+      - fonts-noto
+      - fonts-noto-cjk
+      - fonts-noto-color-emoji

@@ -1,0 +1,30 @@
+darwin:
+  packageManager:
+    update: "brew update"
+    install: "brew install"
+    installCask: "brew install --cask"
+  packages:
+    essential:
+      - openssh
+      - git
+      - wget
+      - fish
+    desktop:
+      - font-monaspace-nf
+      - google-chrome
+      - ghostty
+      - keka
+      - iina
+      - steam
+      - wechat
+      - telegram
+      - visual-studio-code
+      - claude
+      - chatgpt
+      - clash-verge-rev
+      - betterdisplay
+      - snipaste
+      - discord
+      - docker
+      - scroll-reverser
+      - raycast

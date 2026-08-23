@@ -1,0 +1,29 @@
+windows:
+  packageManager:
+    install: "winget install --accept-source-agreements --accept-package-agreements --exact --id"
+  packages:
+    essential:
+      - Git.Git
+      - 7zip.7zip
+      - jdx.mise
+    desktop:
+      - abbodi1406.vcredist
+      - Bandisoft.Honeyview
+      - ClashVergeRev.ClashVergeRev
+      - Daum.PotPlayer
+      - Google.Chrome
+      - PIKCLOUD.PikPak
+      - RARLab.WinRAR
+      - Valve.Steam
+      - Tencent.WeChat.Universal
+      - qBittorrent.qBittorrent
+      - Baidu.BaiduNetdisk
+      - NetEase.CloudMusic
+      - Comfy.ComfyUI-Desktop
+      - Ollama.Ollama
+      - Telegram.TelegramDesktop
+      - Microsoft.VisualStudioCode
+      - Microsoft.PowerToys
+      - Anthropic.Claude
+      - Discord.Discord
+      - Raycast.Raycast

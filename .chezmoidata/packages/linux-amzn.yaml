@@ -1,0 +1,9 @@
+linux-amzn:
+  packageManager:
+    update: "sudo yum update -y"
+    install: "sudo yum install -y"
+  packages:
+    essential:
+      - git
+      - wget
+    desktop:

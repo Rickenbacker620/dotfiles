@@ -1,0 +1,37 @@
+linux-arch:
+  packageManager:
+    update: "sudo pacman -Syu --noconfirm"
+    install: "sudo pacman -S --noconfirm --needed"
+  packages:
+    essential:
+      - openssh
+      - 7zip
+      - base-devel
+      - git
+      - wget
+      - fish
+    desktop:
+      - hyprland
+      - waybar
+      - wl-clipboard
+      - wofi
+      - ghostty
+      - pipewire
+      - wireplumber
+      - brightnessctl
+      - fcitx5-im
+      - bluez
+      - bluez-utils
+      - hyprpaper
+      - power-profiles-daemon
+      - mpv
+      - libvirt
+      - virt-manager
+      - noto-fonts
+      - noto-fonts-cjk
+      - noto-fonts-emoji
+      - noto-fonts-extra
+      - ttf-jetbrains-mono-nerd
+      - ttf-font-awesome
+      - powerline
+      - powerline-fonts

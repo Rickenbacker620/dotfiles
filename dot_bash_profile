@@ -1,0 +1,4 @@
+# Login shells read this instead of .bashrc, so ssh sessions need the handoff
+# wired up here. Source .profile first - distros put PATH setup there.
+[ -f ~/.profile ] && . ~/.profile
+[ -f ~/.bashrc ] && . ~/.bashrc

@@ -1,48 +1,22 @@
-# If not running interactively, don't do anything
+# Interactive only; hand off to fish when it's available.
+# Without this guard, sshd sources .bashrc for `ssh host cmd`, and the exec
+# below would hijack scp/rsync/git-over-ssh.
 case $- in
 	*i*) ;;
 	*) return ;;
 esac
 
-# Persistent history
+if [ -z "$SHELL_HANDOFF" ]; then
+	# On machines with no system fish, mise has it.
+	fish_bin=$(command -v fish 2>/dev/null) ||
+		fish_bin=$("$HOME/.local/bin/mise" which fish 2>/dev/null)
+	[ -n "$fish_bin" ] && export SHELL_HANDOFF=1 && exec "$fish_bin"
+	unset fish_bin
+fi
+
+# Only reached when we stayed here: keep history in XDG state, not $HOME.
 HISTDIR="${XDG_STATE_HOME:-$HOME/.local/state}/{{ . }}"
-mkdir -p "$HISTDIR"
+[ -d "$HISTDIR" ] || mkdir -p "$HISTDIR"
 HISTFILE="$HISTDIR/history"
 HISTSIZE=10000
-{{ if eq . "zsh" -}}
-SAVEHIST=10000
-setopt APPEND_HISTORY
-setopt HIST_IGNORE_SPACE
-setopt HIST_IGNORE_ALL_DUPS
-{{- else -}}
-HISTFILESIZE=10000
-HISTCONTROL=ignoredups:ignorespace
-shopt -s histappend
-{{- end }}
-
-function f() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	command yazi "$@" --cwd-file="$tmp"
-	IFS= read -r -d '' cwd < "$tmp"
-	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
-	command rm -f -- "$tmp"
-}
-
-play() {
-	local tmp rc cwd
-	tmp="$(mktemp -t "play-cwd.XXXXXX")"
-	play-engine --cwd-file "$tmp" "$@"
-	rc=$?
-	if [ -s "$tmp" ]; then
-		cwd="$(cat "$tmp")"
-		[ -d "$cwd" ] && cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
-	return $rc
-}
-
-{{ template "shell_alias" . }}
-
-eval "$(~/.local/bin/mise activate {{ . }})"
-eval "$(zoxide init {{ . }})"
-eval "$(starship init {{ . }})"
+{{ if eq . "zsh" }}SAVEHIST=10000{{ else }}HISTFILESIZE=10000{{ end }}

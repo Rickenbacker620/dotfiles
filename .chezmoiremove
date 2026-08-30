@@ -1,0 +1,12 @@
+{{- if ne .chezmoi.os "windows" }}
+.bash_login
+.bash_logout
+.zprofile
+.zlogin
+.zlogout
+.gitconfig
+.gitignore
+.bash_history
+.zsh_history
+.lesshst
+{{- end }}

@@ -14,9 +14,5 @@ if [ -z "$SHELL_HANDOFF" ]; then
 	unset fish_bin
 fi
 
-# Only reached when we stayed here: keep history in XDG state, not $HOME.
-HISTDIR="${XDG_STATE_HOME:-$HOME/.local/state}/{{ . }}"
-[ -d "$HISTDIR" ] || mkdir -p "$HISTDIR"
-HISTFILE="$HISTDIR/history"
-HISTSIZE=10000
-{{ if eq . "zsh" }}SAVEHIST=10000{{ else }}HISTFILESIZE=10000{{ end }}
+# This is only a fallback shell - no history, and it would land in $HOME.
+unset HISTFILE

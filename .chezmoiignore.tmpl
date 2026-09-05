@@ -3,16 +3,6 @@
 **/LICENSE
 **/screenshot.png
 
-{{- if not (and (eq .chezmoi.os "linux") .hasDesktop) }}
-# Desktop/GUI configs - only needed on Linux with GUI packages installed
-.config/hypr/**
-.config/waybar/**
-.config/wofi/**
-.config/wallpaper/**
-.config/mpv/**
-.config/fish/conf.d/hyprland.fish
-{{- end }}
-
 {{- if or (eq .chezmoi.os "windows") (and (eq .chezmoi.os "linux") (not .hasDesktop)) }}
 # ghostty isn't installed on Windows, or on Linux without GUI packages
 .config/ghostty/**

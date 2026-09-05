@@ -15,6 +15,20 @@ report_cwd() {
 	[ -n "$cwd_file" ] && printf '%s' "$project_path" > "$cwd_file"
 }
 
+add_devcontainer() {
+	[ -e "$project_path/.devcontainer" ] && return 0
+	gum confirm "Add a devcontainer?" || return 0
+	mkdir -p "$project_path/.devcontainer"
+	cat > "$project_path/.devcontainer/devcontainer.json" <<'JSON'
+{
+	"name": "devbox",
+	"image": "ghcr.io/rickenbacker620/devbox:latest",
+	"remoteUser": "dev",
+	"containerUser": "dev"
+}
+JSON
+}
+
 open_code() {
 	if command -v code >/dev/null 2>&1; then
 		(cd "$project_path" && code .)
@@ -99,6 +113,7 @@ gum style --foreground 212 --border double --padding "1 2" \
 	"" \
 	"Location: $project_path"
 
+add_devcontainer
 report_cwd
 
 if gum confirm "Open in VS Code?"; then

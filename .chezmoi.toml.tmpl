@@ -17,6 +17,9 @@
 {{- $shell := "pwsh" -}}
 {{- if ne .chezmoi.os "windows" -}}
 {{-   $shell = base (env "SHELL") -}}
+{{-   if or (eq $shell ".") (eq $shell "") -}}
+{{-     $shell = "bash" -}}
+{{-   end -}}
 {{- end -}}
 
 [data]

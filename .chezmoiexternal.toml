@@ -21,28 +21,6 @@
     stripComponents = 1
     refreshPeriod = "168h"
 
-# MPV Anime4K shaders
-[".config/mpv/shaders"]
-    type = "archive"
-    url = "https://github.com/bloc97/Anime4K/releases/download/v4.0.1/Anime4K_v4.0.zip"
-    format = "zip"
-    exact = true
-    stripComponents = 0
-
-[".config/wofi"]
-    type = "archive"
-    url = "https://github.com/dracula/wofi/archive/master.tar.gz"
-    exact = true
-    stripComponents = 1
-    refreshPeriod = "168h"
-
-[".config/waybar/dracula"]
-    type = "archive"
-    url = "https://github.com/dracula/waybar/archive/master.tar.gz"
-    exact = true
-    stripComponents = 1
-    refreshPeriod = "168h"
-
 [".config/fish/completions/eza.fish"]
     type = "file"
     url = "https://raw.githubusercontent.com/eza-community/eza/main/completions/fish/eza.fish"

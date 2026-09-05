@@ -1,5 +1,8 @@
 [tools]
-eza = "latest"
+# aqua builds an exact asset name from `libc`, and eza ships no
+# aarch64-musl build; the github backend scores assets instead and falls
+# back to the gnu one on arm64.
+"github:eza-community/eza" = "latest"
 dust = "latest"
 fd = "latest"
 bottom = "latest"

@@ -1,0 +1,6 @@
+{
+	"name": "devbox",
+	"image": "ghcr.io/rickenbacker620/devbox:latest",
+	"remoteUser": "dev",
+	"containerUser": "dev"
+}

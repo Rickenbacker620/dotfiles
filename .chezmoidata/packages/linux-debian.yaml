@@ -1,5 +1,3 @@
-# fish is installed by mise (aqua:fish-shell/fish-shell), not apt - see
-# .config/mise/config.toml; distro fish is too old (we want 4.x, the Rust one).
 linux-debian:
   packageManager:
     update: "sudo apt-get update"
@@ -8,13 +6,13 @@ linux-debian:
     essential:
       - build-essential
       - openssh-client
-      - openssh-server
       - ca-certificates
       - gnupg
       - git
       - wget
+      - procps
+      - file
     desktop:
-      - mpv
       - libvirt-daemon
       - virt-viewer
       - fonts-noto

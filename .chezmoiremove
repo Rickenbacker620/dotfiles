@@ -1,5 +1,6 @@
 {{- if ne .chezmoi.os "windows" }}
 .bash_login
+.profile
 .bash_logout
 .zprofile
 .zlogin

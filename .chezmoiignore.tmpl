@@ -21,10 +21,21 @@
 {{- if eq .chezmoi.os "windows" }}
 # Unix-only configs - not needed on Windows
 .config/fish/**
-.config/zellij/**
 .bashrc
 .zshrc
+.chezmoiscripts/unix/**
 {{- else }}
 # PowerShell 7+ profile - Windows only
 Documents/**
+.chezmoiscripts/windows/**
+{{- end }}
+
+{{- if ne .shell "bash" }}
+.bashrc
+.bash_profile
+{{- end }}
+
+{{- if ne .shell "zsh" }}
+.zshenv
+.zshrc
 {{- end }}

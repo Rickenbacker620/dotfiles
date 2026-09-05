@@ -3,11 +3,23 @@
 {{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
 {{- end -}}
 
+{{- $isContainer := or (stat "/.dockerenv") (stat "/run/.containerenv") -}}
+{{- $isSSH := or (ne (env "SSH_TTY") "") (ne (env "SSH_CONNECTION") "") -}}
 {{- $hasDesktop := true -}}
 {{- if eq .chezmoi.os "linux" -}}
-{{-   $hasDesktop = promptBoolOnce . "hasDesktop" "Install GUI/desktop packages" false -}}
+{{-   if or $isContainer $isSSH -}}
+{{-     $hasDesktop = false -}}
+{{-   else -}}
+{{-     $hasDesktop = promptBoolOnce . "hasDesktop" "Install GUI/desktop packages" false -}}
+{{-   end -}}
+{{- end -}}
+
+{{- $shell := "pwsh" -}}
+{{- if ne .chezmoi.os "windows" -}}
+{{-   $shell = base (env "SHELL") -}}
 {{- end -}}
 
 [data]
     osid = {{ $osid | quote }}
     hasDesktop = {{ $hasDesktop }}
+    shell = {{ $shell | quote }}

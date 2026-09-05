@@ -1,4 +1,3 @@
-{{- if eq .chezmoi.os "windows" -}}
 $ErrorActionPreference = "Stop"
 
 $fragmentDir = "$env:LOCALAPPDATA\Microsoft\Windows Terminal\Fragments\Dracula"
@@ -42,4 +41,3 @@ $fragmentContent = @{
 $fragmentContent | ConvertTo-Json -Depth 32 | Set-Content -Path $fragmentPath
 
 Write-Host "Dracula Windows Terminal fragment installed at $fragmentPath"
-{{- end -}}

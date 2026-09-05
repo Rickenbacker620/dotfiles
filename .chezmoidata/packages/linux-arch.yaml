@@ -9,7 +9,6 @@ linux-arch:
       - base-devel
       - git
       - wget
-      - fish
     desktop:
       - hyprland
       - waybar

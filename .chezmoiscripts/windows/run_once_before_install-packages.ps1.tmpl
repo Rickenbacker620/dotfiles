@@ -1,4 +1,3 @@
-{{- if eq .chezmoi.os "windows" -}}
 {{- $osConfig := index . .osid -}}
 {{- $pm := $osConfig.packageManager -}}
 {{- $packages := $osConfig.packages -}}
@@ -28,4 +27,3 @@ Invoke-Checked '{{ $pm.install }} {{ . }}'
 {{ end -}}
 
 Write-Host "All packages installed successfully!"
-{{- end -}}

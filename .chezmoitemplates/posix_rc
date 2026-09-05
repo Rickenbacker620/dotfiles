@@ -1,18 +1,13 @@
-# Interactive only; hand off to fish when it's available.
-# Without this guard, sshd sources .bashrc for `ssh host cmd`, and the exec
-# below would hijack scp/rsync/git-over-ssh.
 case $- in
 	*i*) ;;
 	*) return ;;
 esac
 
 if [ -z "$SHELL_HANDOFF" ]; then
-	# On machines with no system fish, mise has it.
 	fish_bin=$(command -v fish 2>/dev/null) ||
 		fish_bin=$("$HOME/.local/bin/mise" which fish 2>/dev/null)
 	[ -n "$fish_bin" ] && export SHELL_HANDOFF=1 && exec "$fish_bin"
 	unset fish_bin
 fi
 
-# This is only a fallback shell - no history, and it would land in $HOME.
 unset HISTFILE

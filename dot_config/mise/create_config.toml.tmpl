@@ -9,13 +9,18 @@ zoxide = "latest"
 fzf = "latest"
 duf = "latest"
 yazi = "latest"
-{{- if ne .chezmoi.os "windows" }}
 zellij = "latest"
+{{- if eq .chezmoi.os "linux" }}
+"aqua:fish-shell/fish-shell" = "latest"
 {{- end }}
 neovim = "latest"
 jq = "latest"
 gum = "latest"
 starship = "latest"
+
+[settings]
+not_found_auto_install = false
+not_found_system_fallback = false
 
 [env]
 _.file = '~/.config/mise/.env'

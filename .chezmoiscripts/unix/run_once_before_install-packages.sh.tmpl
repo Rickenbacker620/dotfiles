@@ -1,10 +1,8 @@
-{{- if eq .chezmoi.os "windows" -}}
-{{- else -}}
+{{- $osConfig := index . .osid -}}
+{{- $pm := $osConfig.packageManager -}}
+{{- $packages := $osConfig.packages -}}
 #!/bin/bash
 set -euo pipefail
-{{- $osConfig := index . .osid }}
-{{- $pm := $osConfig.packageManager }}
-{{- $packages := $osConfig.packages }}
 
 echo "Updating package manager..."
 {{ $pm.update }}
@@ -34,4 +32,3 @@ echo "Installing desktop packages ({{ .osid }})..."
 {{ end -}}
 
 echo "All packages installed successfully!"
-{{- end -}}

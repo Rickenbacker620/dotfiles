@@ -1,8 +1,5 @@
 [tools]
-# aqua builds an exact asset name from `libc`, and eza ships no
-# aarch64-musl build; the github backend scores assets instead and falls
-# back to the gnu one on arm64.
-"github:eza-community/eza" = "latest"
+eza = "latest"
 dust = "latest"
 fd = "latest"
 bottom = "latest"
@@ -11,10 +8,14 @@ ripgrep = "latest"
 zoxide = "latest"
 fzf = "latest"
 duf = "latest"
-yazi = "latest"
 zellij = "latest"
 {{- if eq .chezmoi.os "linux" }}
 "aqua:fish-shell/fish-shell" = "latest"
+# The prebuilt gnu yazi needs GLIBC_2.39; the musl build is static and runs
+# on older distros too. aqua ignores `matching`, hence the github backend.
+"github:sxyazi/yazi" = { version = "latest", matching = "musl" }
+{{- else }}
+yazi = "latest"
 {{- end }}
 neovim = "latest"
 jq = "latest"
@@ -24,7 +25,6 @@ starship = "latest"
 [settings]
 not_found_auto_install = false
 not_found_system_fallback = false
-libc = "musl"
 
 [env]
 _.file = '~/.config/mise/.env'
